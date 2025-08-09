@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap');
+
+.font-sarabun {
+    font-family: 'Sarabun', sans-serif;
+}
+
+@media print {
+    body {
+        background-color: #fff;
+        color: #000;
+        font-family: 'Sarabun', sans-serif;
+    }
+    .no-print {
+        display: none;
+    }
+    .shadow-lg {
+        box-shadow: none;
+    }
+    input, textarea {
+        border: 1px solid #000;
+    }
+    input[type="radio"] {
+        display: none;
+    }
+    input[type="radio"] + label::before {
+        content: '\200B';
+    }
+    input[type="radio"]:checked + label::before {
+        content: '✓';
+        color: #000;
+        margin-right: 4px;
+        font-weight: bold;
+    }
+    .border-dashed {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-color: #000;
+        height: 1.5em;
+    }
+}

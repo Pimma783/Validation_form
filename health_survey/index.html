@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Survey</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-bottom: 2px solid #6366f1; 
+        }
+        input,
+        textarea {
+            border: none;
+            border-bottom: 1px solid #d1d5db; 
+            border-radius: 0;
+            padding: 0.5rem 0.75rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+        <h1 class="text-2xl font-bold mb-6 text-center">แบบสอบถามสุขภาพ</h1>
+        <form id="healthForm">
+            <div class="mb-4">
+                <label for="age" class="block text-gray-700 font-bold mb-2">อายุ (ปี)</label>
+                <input type="number" id="age" name="age" class="w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <span class="block text-gray-700 font-bold mb-2">เพศ</span>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="gender" value="male" class="form-radio text-indigo-600">
+                        <span class="ml-2">ชาย</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" name="gender" value="female" class="form-radio text-indigo-600">
+                        <span class="ml-2">หญิง</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4 flex space-x-4">
+                <div class="w-1/2">
+                    <label for="weight" class="block text-gray-700 font-bold mb-2">น้ำหนัก (kg)</label>
+                    <input type="number" id="weight" name="weight" step="0.01" class="w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="w-1/2">
+                    <label for="height" class="block text-gray-700 font-bold mb-2">ส่วนสูง (cm)</label>
+                    <input type="number" id="height" name="height" step="0.01" class="w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" id="hasDisease" name="hasDisease" class="form-checkbox text-indigo-600">
+                    <span class="ml-2 text-gray-700">มีโรคประจำตัว</span>
+                </label>
+            </div>
+            <div id="diseaseTextarea" class="mb-4 hidden">
+                <label for="diseaseDetails" class="block text-gray-700 font-bold mb-2">รายละเอียดโรคประจำตัว</label>
+                <textarea id="diseaseDetails" name="diseaseDetails" rows="4" class="w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+            </div>
+            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline">
+                คำนวณ
+            </button>
+        </form>
+    </div>
+
+    <div id="resultModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-xl w-96">
+            <h2 class="text-xl font-bold mb-4">ผลลัพธ์</h2>
+            <div id="modalContent"></div>
+            <div class="mt-4 text-right">
+                <button id="closeModal" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">ปิด</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

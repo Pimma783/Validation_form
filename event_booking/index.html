@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="bg-[#F2F2F7] flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-6 rounded-2xl shadow-sm w-full max-w-sm border border-gray-200">
+        <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">ฟอร์มการจองตั๋ว</h2>
+        <form id="bookingForm" class="space-y-4">
+            <div>
+                <label for="fullName" class="block text-sm font-medium text-gray-600 mb-1">ชื่อ-นามสกุล:</label>
+                <input type="text" id="fullName" name="fullName" class="w-full p-3 bg-gray-100 border border-gray-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
+                <p id="fullNameError" class="error-message"></p>
+            </div>
+            <div>
+                <label for="phoneNumber" class="block text-sm font-medium text-gray-600 mb-1">เบอร์โทรศัพท์:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" class="w-full p-3 bg-gray-100 border border-gray-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
+                <p id="phoneNumberError" class="error-message"></p>
+            </div>
+            <div>
+                <label for="ticketType" class="block text-sm font-medium text-gray-600 mb-1">เลือกประเภทตั๋ว:</label>
+                <select id="ticketType" name="ticketType" class="w-full p-3 bg-gray-100 border border-gray-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
+                    <option value="normal">ปกติ</option>
+                    <option value="vip">VIP</option>
+                    <option value="premium">Premium</option>
+                </select>
+            </div>
+            <div>
+                <label for="ticketQuantity" class="block text-sm font-medium text-gray-600 mb-1">จำนวนตั๋ว:</label>
+                <input type="number" id="ticketQuantity" name="ticketQuantity" min="1" max="5" class="w-full p-3 bg-gray-100 border border-gray-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
+                <p id="ticketQuantityError" class="error-message"></p>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg font-medium shadow-sm hover:bg-blue-600 transition-colors duration-200">จองตั๋ว</button>
+        </form>
+    </div>
+
+    <div id="successModal" class="modal hidden fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center p-4">
+        <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm w-full text-center">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">จองตั๋วสำเร็จ!</h3>
+            <p id="modalMessage" class="text-gray-600 mb-6 text-base"></p>
+            <button id="closeModalBtn" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition-colors duration-200">ปิด</button>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
