@@ -8,12 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const successModalCloseBtn = document.getElementById('success-modal-close-btn');
 
     const formElements = {
-        prefix: document.querySelector('input[name="prefix"]'),
         fullName: document.getElementById('fullName'),
         studentId: document.getElementById('studentId'),
         mobileNumber: document.getElementById('mobileNumber'),
-        program: document.querySelector('input[name="program"]'),
-        semester: document.querySelector('input[name="semester"]'),
         currentMajor: document.getElementById('currentMajor'),
         currentFaculty: document.getElementById('currentFaculty'),
         desiredMajor: document.getElementById('desiredMajor'),
@@ -22,27 +19,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     submitBtn.addEventListener('click', function(event) {
         event.preventDefault();
+        console.log("ปุ่ม ยื่นคำร้อง ถูกคลิก");
         const isValid = validateForm();
+        console.log("ผลการตรวจสอบฟอร์ม:", isValid);
 
         if (isValid) {
-            confirmationModal.classList.remove('hidden');
+            confirmationModal.classList.add('is-visible');
+            console.log("แสดง Modal ยืนยัน");
+        } else {
+            console.log("การตรวจสอบฟอร์มไม่ผ่าน");
         }
     });
 
     modalConfirmBtn.addEventListener('click', function() {
-        console.log("ส่งแบบฟอร์มแล้ว");
-        confirmationModal.classList.add('hidden');
-        successModal.classList.remove('hidden');
+        console.log("ปุ่ม ยืนยัน ใน Modal ถูกคลิก");
+        confirmationModal.classList.remove('is-visible');
+        successModal.classList.add('is-visible');
+        console.log("แสดง Modal สำเร็จ");
     });
 
     modalCancelBtn.addEventListener('click', function() {
-        confirmationModal.classList.add('hidden');
+        confirmationModal.classList.remove('is-visible');
+        console.log("Modal ยืนยันถูกยกเลิก");
     });
 
     successModalCloseBtn.addEventListener('click', function() {
-        successModal.classList.add('hidden');
+        successModal.classList.remove('is-visible');
         transferForm.reset();
         clearErrors();
+        console.log("ปิด Modal สำเร็จและรีเซ็ตฟอร์ม");
     });
 
     function validateForm() {
@@ -113,4 +118,4 @@ document.addEventListener('DOMContentLoaded', function() {
         const errorMessages = document.querySelectorAll('.text-red-500');
         errorMessages.forEach(el => el.classList.add('hidden'));
     }
-}); 
+});
